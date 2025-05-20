@@ -40,9 +40,6 @@
               <label for="description">Description :</label>
               <textarea id="description" v-model="form.description" name="description" placeholder="Parle-nous de toi" rows="4"></textarea>
   
-              <label for="video">Vidéo (facultatif) :</label>
-              <input type="file" id="video" ref="videoInput" name="video" accept="video/*" @change="handleFileUpload('video')">
-  
               <label for="photo">Photo (facultatif) :</label>
               <input type="file" id="photo" ref="photoInput" name="photo" accept="image/*" @change="handleFileUpload('photo')">
   
@@ -111,9 +108,7 @@
   
   // Gestion des fichiers uploadés
   const handleFileUpload = (field) => {
-    if (field === 'video') {
-      form.value.video = videoInput.value.files[0];
-    } else if (field === 'photo') {
+    if (field === 'photo') {
       form.value.photo = photoInput.value.files[0];
     } else if (field === 'cv') {
       form.value.cv = cvInput.value.files[0];
@@ -145,7 +140,6 @@
     formData.append('email', form.value.email);
     if (form.value.instagram_tag) formData.append('instagram_tag', form.value.instagram_tag);
     if (form.value.description) formData.append('description', form.value.description);
-    if (form.value.video) formData.append('video', form.value.video);
     if (form.value.photo) formData.append('photo', form.value.photo);
     if (form.value.cv) formData.append('cv', form.value.cv);
   
